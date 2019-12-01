@@ -7,6 +7,7 @@ def index(request):
     visitantes = Visitante.objects.all()
 
     context = {
+        "nome_pagina": "Página inicial",
         "usuario_logado": request.user,
         "visitantes": visitantes,
     }
