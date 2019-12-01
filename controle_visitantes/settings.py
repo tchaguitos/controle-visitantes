@@ -18,6 +18,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     "usuarios",
     "porteiros",
+    "visitantes",
 ]
 
 MIDDLEWARE = [
