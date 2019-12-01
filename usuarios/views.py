@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from visitantes.models import Visitante
 
 def index(request):
 
+    visitantes = Visitante.objects.all()
+
     context = {
-        "usuario_logado": request.user
+        "usuario_logado": request.user,
+        "visitantes": visitantes,
     }
 
     return render(request, "index.html", context)

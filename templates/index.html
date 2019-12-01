@@ -171,16 +171,18 @@
                                     </thead>
 
                                     <tbody>
-                                        <td>Don Corleone</td>
-                                        <td>123.123.123.06</td>
-                                        <td>22 de agosto 15:30</td>
-                                        <td>22 de agosto 15:38</td>
-                                        <td>Darth Vader</td>
-                                        <td>
-                                            <a href="#">
-                                                Ver detalhes
-                                            </a>
-                                        </td>
+                                        {% for visitante in visitantes %}
+                                            <td>{{ visitante.nome_completo }}</td>
+                                            <td>{{ visitante.cpf }}</td>
+                                            <td>{{ visitante.horario_chegada }}</td>
+                                            <td>{{ visitante.horario_autorizacao }}</td>
+                                            <td>{{ visitante.autorizado_por }}</td>
+                                            <td>
+                                                <a href="#">
+                                                    Ver detalhes
+                                                </a>
+                                            </td>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

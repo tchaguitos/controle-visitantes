@@ -72,6 +72,8 @@ class Visitante(models.Model):
     autorizado_por = models.CharField(
         verbose_name="Nome do responsável por autorizar a entrada do visitante",
         max_length=194,
+        blank=True,
+        null=True,
     )
 
     class Meta:
