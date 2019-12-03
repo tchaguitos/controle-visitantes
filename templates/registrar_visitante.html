@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block conteudo %}
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
@@ -43,15 +45,22 @@
                 
                 <div class="card-body">
                     <div class="container">
-                        <form class="user">
-                            {{ form.as_p }}
+                        <form method="POST" class="user">
+                            {% for field in form %}
+                                <div class="form-group">
+                                    <label>{{ field.label }}</label>
+                                    {{ field | add_class:"form-control" }}
+                                </div>
+                            {% endfor %}
 
-                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
-                                <span class="text">Registrar visitante</span>
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                            </a>
+                            <div class="text-right">
+                                <button class="btn btn-primary btn-sm btn-icon-split" type="submit">
+                                    <span class="text">Registrar visitante</span>
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
