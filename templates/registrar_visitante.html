@@ -34,14 +34,6 @@
         <div class="container-fluid">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
-                
-                <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                    <span class="text">Registrar visitante</span>
-                    
-                    <span class="icon text-white-50">
-                        <i class="fas fa-user-plus"></i>
-                    </span>
-                </a>
             </div>
             
             <div class="card shadow mb-4">
@@ -52,16 +44,13 @@
                 <div class="card-body">
                     <div class="container">
                         <form class="user">
-                            <div class="form-group">
-                                <input type="email" class="form-control form-control-user form-sm" placeholder="E-mail">
-                            </div>
+                            {{ form.as_p }}
 
-                            <div class="form-group">
-                                <input type="password" class="form-control form-control-user"placeholder="Password">
-                            </div>
-
-                            <a href="index.html" class="btn btn-primary btn-user">
-                                Login
+                            <a href="#" class="btn btn-primary btn-sm btn-icon-split">
+                                <span class="text">Registrar visitante</span>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-check"></i>
+                                </span>
                             </a>
                         </form>
                     </div>
