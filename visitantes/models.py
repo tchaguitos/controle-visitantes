@@ -1,11 +1,12 @@
 import uuid 
 from django.db import models
+
 from porteiros.models import Porteiro
 
 class Visitante(models.Model):
 
     STATUS_VISITANTE = (
-        ("AGUARDANDO", "Aguardando configuração"),
+        ("AGUARDANDO_CONFIRMACAO", "Aguardando confirmacao"),
         ("EM_VISITA", "Em visita"),
         ("FINALIZADO", "Visita finalizada"),
     )
@@ -33,7 +34,7 @@ class Visitante(models.Model):
 
     status = models.CharField(
         verbose_name="Status",
-        max_length=10,
+        max_length=22,
         choices=STATUS_VISITANTE,
         default="AGUARDANDO",
     )
