@@ -1,161 +1,123 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-<div id="content-wrapper" class="d-flex flex-column">
-    <div id="content">
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                <i class="fa fa-bars"></i>
-            </button>
-            
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ usuario_logado }}</span>
-                    </a>
-                    
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Perfil
-                        </a>
-                        
-                        <div class="dropdown-divider"></div>
-                        
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Sair
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        
-        <div class="container-fluid">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
 
-                <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-                    <span class="text">Registrar visitante</span>
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+            <span class="text">Registrar visitante</span>
 
-                    <span class="icon text-white-50">
-                        <i class="fas fa-user-plus"></i>
-                    </span>
-                </a>
-            </div>
-            
-            <div class="row">
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitantes no condomínio</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
-                                </div>
-                                
-                                <div class="col-auto">
-                                    <i class="fas fa-user-check fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Visitantes aguardando autorização</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
-                                </div>
-                                
-                                <div class="col-auto">
-                                    <i class="fas fa-user-lock fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Número de visitantes na semana</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-user-friends fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-info shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Número de visitantes no mês</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">37</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-users fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lista de visitantes</h6>
-                </div>
-
+            <span class="icon text-white-50">
+                <i class="fas fa-user-plus"></i>
+            </span>
+        </a>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                            <thead>
-                                <th>Nome</th>
-                                <th>CPF</th>
-                                <th>Horário de chegada</th>
-                                <th>Horário da autorização</th>
-                                <th>Autorizado por</th>
-                                <th>Mais detalhes</th>
-                            </thead>
-
-                            <tbody>
-                                {% for visitante in visitantes %}
-                                    <td>{{ visitante.nome_completo }}</td>
-                                    <td>{{ visitante.cpf }}</td>
-                                    <td>{{ visitante.horario_chegada }}</td>
-                                    <td>{{ visitante.horario_autorizacao }}</td>
-                                    <td>{{ visitante.autorizado_por }}</td>
-                                    <td>
-                                        <a href="#">
-                                            Ver detalhes
-                                        </a>
-                                    </td>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitantes no condomínio</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                        </div>
+                        
+                        <div class="col-auto">
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Controle de visitantes &copy; Django framework na prática</span>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Visitantes aguardando autorização</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                        </div>
+                        
+                        <div class="col-auto">
+                            <i class="fas fa-user-lock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Número de visitantes na semana</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Número de visitantes no mês</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">37</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lista de visitantes</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <thead>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Horário de chegada</th>
+                        <th>Horário da autorização</th>
+                        <th>Autorizado por</th>
+                        <th>Mais detalhes</th>
+                    </thead>
+
+                    <tbody>
+                        {% for visitante in visitantes %}
+                            <tr>
+                                <td>{{ visitante.nome_completo }}</td>
+                                <td>{{ visitante.cpf }}</td>
+                                <td>{{ visitante.horario_chegada }}</td>
+                                <td>{{ visitante.horario_autorizacao }}</td>
+                                <td>{{ visitante.autorizado_por }}</td>
+                                <td>
+                                    <a href="#">
+                                        Ver detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> -->
 {% endblock conteudo %}
