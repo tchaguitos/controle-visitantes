@@ -18,7 +18,9 @@
         {% for message in messages %}
             <div class="alert alert-dismissible alert-{{ message.tags }}" role="alert">
                 {{ message }}
-                <button type="button" class="close" data-dismiss="alert"></button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         {% endfor %}
     {% endif %}
