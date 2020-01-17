@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+        
+        <div class="">
+            <a href="#" class="btn btn-danger btn-icon-split btn-sm">
+                <span class="text">Encerrar visita</span>
+                
+                <span class="icon text-white-50">
+                    <i class="fas fa-door-open"></i>
+                </span>
+            </a>
+            
+            <a href="#" class="btn btn-success btn-icon-split btn-sm">
+                <span class="text">Autorizar entrada</span>
+                
+                <span class="icon text-white-50">
+                    <i class="fas fa-user-check"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="card shadow mb-4">        
+        <div class="card-body">
+            <h4 class="mb-3 text-primary">
+                Informações gerais
+            </h4>
+            
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Status</label>
+                        <input type="text" class="form-control" value="{{ visitante.status }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Horário de chegada</label>
+                        <input type="text" class="form-control" value="{{ visitante.horario_chegada }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Número da casa</label>
+                        <input type="text" class="form-control" value="{{ visitante.numero_casa }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Horário de autorização de entrada</label>
+                        <input type="text" class="form-control" value="{{ visitante.horario_autorizacao }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Entrada autorizada por</label>
+                        <input type="text" class="form-control" value="{{ visitante.autorizado_por }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Horário de saída</label>
+                        <input type="text" class="form-control" value="{{ visitante.horario_saida }}" disabled>
+                    </div>
+                </div>
+            <form>
+
+            <h4 class="mb-3 mt-4 text-primary">
+                Informações pessoais
+            </h4>
+
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Nome completo</label>
+                        <input type="text" class="form-control" value="{{ visitante.nome_completo }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>CPF</label>
+                        <input type="text" class="form-control" value="{{ visitante.cpf }}" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Data de nascimento</label>
+                        <input type="text" class="form-control" value="{{ visitante.data_nascimento }}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Placa do veículo</label>
+                        <input type="text" class="form-control" value="{{ visitante.placa_veiculo }}" disabled>
+                    </div>
+                </div>
+            <form>
+
+            <p class="ml-2 mt-3 text-grey">
+                Visitante registrado em {{ visitante.horario_chegada }} por {{ visitante.registrado_por }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -18,4 +18,10 @@ urlpatterns = [
         visitantes.views.registrar_visitante,
         name="registrar_visitante",
     ),
+
+    path(
+        "visitantes/<slug:token>/",
+        visitantes.views.informacoes_visitante,
+        name="informacoes_visitante",
+    ),
 ]
