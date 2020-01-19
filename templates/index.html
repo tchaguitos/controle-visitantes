@@ -119,7 +119,7 @@
                                 <td>{{ visitante.horario_autorizacao }}</td>
                                 <td>{{ visitante.autorizado_por }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="{% url 'informacoes_visitante' token=visitante.token %}">
                                         Ver detalhes
                                     </a>
                                 </td>
@@ -130,5 +130,5 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 {% endblock conteudo %}
