@@ -77,6 +77,30 @@ class Visitante(models.Model):
         null=True,
     )
 
+    def get_horario_autorizacao(self):
+        if self.horario_autorizacao:
+            return self.horario_autorizacao
+
+        return "Visitante aguardando autorização"
+
+    def get_autorizado_por(self):
+        if self.autorizado_por:
+            return self.autorizado_por
+
+        return "Visitante aguardando autorização"
+
+    def get_horario_saida(self):
+        if self.horario_saida:
+            return self.horario_saida
+
+        return "Horário de saída não registrado"
+
+    def get_placa_veiculo(self):
+        if self.placa_veiculo:
+            return self.placa_veiculo
+
+        return "Veículo não registrado"
+
     class Meta:
         verbose_name = "Visitante"
         verbose_name_plural = "Visitantes"
