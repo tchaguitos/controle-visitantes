@@ -8,7 +8,7 @@
         <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
         
         <div class="">
-            <a href="#" class="btn btn-danger btn-icon-split btn-sm">
+            <a href="#" class="btn btn-warning btn-icon-split btn-sm">
                 <span class="text">Encerrar visita</span>
                 
                 <span class="icon text-white-50">
@@ -36,7 +36,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label>Status</label>
-                        <input type="text" class="form-control" value="{{ visitante.status }}" disabled>
+                        <input type="text" class="form-control" value="{{ visitante.get_status_display }}" disabled>
                     </div>
 
                     <div class="form-group col-md-4">
@@ -97,9 +97,11 @@
                     </div>
                 </div>
             <form>
-
-            <p class="ml-2 mt-3 text-grey">
-                Visitante registrado em {{ visitante.horario_chegada }} por {{ visitante.registrado_por }}
+            
+            <p class="mr-3 mt-3 text-right">
+                <small>
+                    Visitante registrado em {{ visitante.horario_chegada }} por {{ visitante.registrado_por }}
+                </small>
             </p>
         </div>
     </div>

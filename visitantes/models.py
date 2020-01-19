@@ -6,7 +6,7 @@ from porteiros.models import Porteiro
 class Visitante(models.Model):
 
     STATUS_VISITANTE = (
-        ("AGUARDANDO", "Aguardando confirmacao"),
+        ("AGUARDANDO", "Aguardando autorização"),
         ("EM_VISITA", "Em visita"),
         ("FINALIZADO", "Visita finalizada"),
     )
