@@ -116,8 +116,8 @@
                                 <td>{{ visitante.nome_completo }}</td>
                                 <td>{{ visitante.cpf }}</td>
                                 <td>{{ visitante.horario_chegada }}</td>
-                                <td>{{ visitante.horario_autorizacao }}</td>
-                                <td>{{ visitante.autorizado_por }}</td>
+                                <td>{{ visitante.get_horario_autorizacao }}</td>
+                                <td>{{ visitante.get_autorizado_por }}</td>
                                 <td>
                                     <a href="{% url 'informacoes_visitante' token=visitante.token %}">
                                         Ver informações
