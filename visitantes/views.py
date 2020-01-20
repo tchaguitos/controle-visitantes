@@ -8,6 +8,8 @@ from visitantes.forms import VisitanteForm, AutorizaVisitanteForm
 
 from django.shortcuts import get_object_or_404
 
+from datetime import datetime
+
 def registrar_visitante(request):
 
     form = VisitanteForm()
@@ -56,17 +58,22 @@ def autorizar_visitante(request, token):
         form = AutorizaVisitanteForm(request.POST, instance=visitante)
 
         if form.is_valid():
-            form.save()
+            visitante = form.save(commit=False)
+
+            visitante.status = "EM_VISITA"
+            visitante.horario_autorizacao = datetime.now()
+
+            visitante.save()
 
             messages.success(
                 request,
                 "Entrada de visitante autorizada com sucesso"
             )
 
-            return redirect("informacoes_visitante", token=token)
+            return redirect("index")
 
         else:
-            return HttpResponseBadRequest(form.errors.as_json())
+            return HttpResponseBadRequest(form.errors.as_text())
 
     else:
         return HttpResponseNotAllowed(
