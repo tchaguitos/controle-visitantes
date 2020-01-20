@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponseNotAllowed
+from django.http import HttpResponseNotAllowed, HttpResponseBadRequest
 
 from visitantes.models import Visitante
 
@@ -65,7 +65,11 @@ def autorizar_visitante(request, token):
 
             return redirect("informacoes_visitante", token=token)
 
-    return HttpResponseNotAllowed(
-        ["POST"],
-        "Método não permitido"
-    )
+        else:
+            return HttpResponseBadRequest(form.errors.as_json())
+
+    else:
+        return HttpResponseNotAllowed(
+            ["POST"],
+            "Método não permitido"
+        )
