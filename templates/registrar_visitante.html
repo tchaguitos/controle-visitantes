@@ -9,32 +9,50 @@
     </div>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Registrar visitante</h6>
-        </div>
-        
         <div class="card-body">
-            <div class="container">
-                <form method="POST" class="user">
+            <h4 class="mb-3 text-primary">
+                Formulário para registro de novo visitante
+            </h4>
+
+            <p class="mb-5 ml-1">
+                <small>
+                    O asterisco (*) indica que o campo é obrigatório
+                </small>
+            </p>
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-dismissible alert-warning" role="alert">
+                                {{ error | escape }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            
+            <form method="post">
+                <div class="form-row">
                     {% csrf_token %}
 
                     {% for field in form %}
-                        <div class="form-group">
-                            <label>{{ field.label }}</label>
+                        <div class="form-group col-md-12">
+                            <label>{{ field.label }} {% if not field.name == "placa_veiculo" %} * {% endif %}</label>
                             {{ field | add_class:"form-control" }}
                         </div>
                     {% endfor %}
+                </div>
 
-                    <div class="text-right">
-                        <button class="btn btn-primary btn-sm" type="submit">
-                            <span class="text">Registrar visitante</span>
-                            <span class="icon text-white-50">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <span class="text">Registrar visitante</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
