@@ -8,21 +8,25 @@
         <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
         
         <div class="">
-            <a href="#" class="btn btn-warning btn-icon-split btn-sm">
-                <span class="text">Encerrar visita</span>
-                
-                <span class="icon text-white-50">
-                    <i class="fas fa-door-open"></i>
-                </span>
-            </a>
-            
-            <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#modal1">
-                <span class="text">Autorizar entrada</span>
-                
-                <span class="icon text-white-50">
-                    <i class="fas fa-user-check"></i>
-                </span>
-            </a>
+            {% if visitante.status == "EM_VISITA" %}
+                <a href="#" class="btn btn-warning btn-icon-split btn-sm">
+                    <span class="text">Encerrar visita</span>
+                    
+                    <span class="icon text-white-50">
+                        <i class="fas fa-door-open"></i>
+                    </span>
+                </a>
+            {% endif %}
+
+            {% if visitante.status == "AGUARDANDO" %}
+                <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#modal1">
+                    <span class="text">Autorizar entrada</span>
+                    
+                    <span class="icon text-white-50">
+                        <i class="fas fa-user-check"></i>
+                    </span>
+                </a>
+            {% endif %}
         </div>
     </div>
     
