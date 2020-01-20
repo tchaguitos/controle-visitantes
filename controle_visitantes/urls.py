@@ -24,4 +24,10 @@ urlpatterns = [
         visitantes.views.informacoes_visitante,
         name="informacoes_visitante",
     ),
+
+    path(
+        "visitantes/<slug:token>/autorizar-entrada/",
+        visitantes.views.autorizar_visitante,
+        name="autorizar_visitante"
+    )
 ]
