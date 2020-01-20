@@ -80,3 +80,27 @@ def autorizar_visitante(request, token):
             ["POST"],
             "Método não permitido"
         )
+
+
+def finalizar_visita(request, token):
+
+    if request.method == "POST":
+        visitante = get_object_or_404(Visitante, token=token)
+
+        visitante.status = "FINALIZADO"
+        visitante.horario_saida = datetime.now()
+
+        visitante.save()
+
+        messages.success(
+            request,
+            "Visita finalizada com sucesso"
+        )
+
+        return redirect("index")
+
+    else:
+        return HttpResponseNotAllowed(
+            ["POST"],
+            "Método não permitido"
+        )
