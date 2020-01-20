@@ -16,7 +16,7 @@
                 </span>
             </a>
             
-            <a href="#" class="btn btn-success btn-icon-split btn-sm">
+            <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#modal1">
                 <span class="text">Autorizar entrada</span>
                 
                 <span class="icon text-white-50">
@@ -103,6 +103,34 @@
                     Visitante registrado em {{ visitante.horario_chegada }} por {{ visitante.registrado_por }}
                 </small>
             </p>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Autorizar entrada de visitante</h5>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="id_autorizado_por" class="col-form-label">Morador responsável por autorizar a entrada do visitante:</label>
+                            <input type="text" class="form-control" id="id_autorizado_por" name="autorizado_por">
+                        </div>
+                    </form>
+                </div>
+            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Autorizar entrada</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
