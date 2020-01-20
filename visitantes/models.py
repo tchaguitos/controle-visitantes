@@ -40,7 +40,7 @@ class Visitante(models.Model):
     )
 
     horario_chegada = models.DateTimeField(
-        verbose_name="Horário de chegada na recepção", auto_now=True
+        verbose_name="Horário de chegada na recepção", auto_now_add=True
     )
 
     horario_autorizacao = models.DateTimeField(
