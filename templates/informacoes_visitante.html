@@ -8,22 +8,22 @@
         <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
         
         <div class="">
-            {% if visitante.status == "EM_VISITA" %}
-                <a href="#" class="btn btn-warning btn-icon-split btn-sm">
-                    <span class="text">Encerrar visita</span>
-                    
-                    <span class="icon text-white-50">
-                        <i class="fas fa-door-open"></i>
-                    </span>
-                </a>
-            {% endif %}
-
             {% if visitante.status == "AGUARDANDO" %}
                 <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#modal1">
                     <span class="text">Autorizar entrada</span>
                     
                     <span class="icon text-white-50">
                         <i class="fas fa-user-check"></i>
+                    </span>
+                </a>
+            {% endif %}
+
+            {% if visitante.status == "EM_VISITA" %}
+                <a href="#" class="btn btn-warning btn-icon-split btn-sm" data-toggle="modal" data-target="#modal2">
+                    <span class="text">Encerrar visita</span>
+                    
+                    <span class="icon text-white-50">
+                        <i class="fas fa-door-open"></i>
                     </span>
                 </a>
             {% endif %}
@@ -35,6 +35,21 @@
             <h4 class="mb-3 text-primary">
                 Informações gerais
             </h4>
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-dismissible alert-warning" role="alert">
+                                {{ error | escape }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
             
             <form>
                 <div class="form-row">
@@ -49,7 +64,7 @@
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label>Número da casa</label>
+                        <label>Número da casa a ser visitada</label>
                         <input type="text" class="form-control" value="{{ visitante.numero_casa }}" disabled>
                     </div>
                 </div>
@@ -122,19 +137,44 @@
                 </div>
             
                 <div class="modal-body">
-                    <form method="post" action="{% url 'autorizar_visitante' token=visitante.token %}">
+                    <form method="post">
                         {% csrf_token %}
 
                         <div class="form-group">
-                            <label for="id_autorizado_por" class="col-form-label">Morador responsável por autorizar a entrada do visitante:</label>
-                            <input type="text" class="form-control" id="id_autorizado_por" name="autorizado_por">
+                            <label for="id_autorizado_por" class="col-form-label">Nome do morador responsável por autorizar a entrada do visitante:</label>
+                            {{ form.autorizado_por | add_class:"form-control"  }}
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Autorizar entrada</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Finalizar visita</h5>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <p>Realmente deseja finalizar a visita?</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <a href="{% url 'finalizar_visita' token=visitante.token %}" type="button" class="btn btn-primary">Finalizar visita</a>
+                    </div>
                 </div>
             </div>
         </div>
