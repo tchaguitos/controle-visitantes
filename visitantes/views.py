@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+
 from django.http import HttpResponseNotAllowed, HttpResponseBadRequest
 
 from visitantes.models import Visitante
@@ -40,21 +41,10 @@ def registrar_visitante(request):
 
 def informacoes_visitante(request, token):
 
+    form = AutorizaVisitanteForm()
     visitante = get_object_or_404(Visitante, token=token)
 
-    context = {
-        "nome_pagina": "Informações de visitante",
-        "visitante": visitante,
-    }
-
-    return render(request, "informacoes_visitante.html", context)
-
-
-def autorizar_visitante(request, token):
-
     if request.method == "POST":
-        visitante = get_object_or_404(Visitante, token=token)
-
         form = AutorizaVisitanteForm(request.POST, instance=visitante)
 
         if form.is_valid():
@@ -72,14 +62,13 @@ def autorizar_visitante(request, token):
 
             return redirect("index")
 
-        else:
-            return HttpResponseBadRequest(form.errors.as_text())
+    context = {
+        "nome_pagina": "Informações de visitante",
+        "visitante": visitante,
+        "form": form,
+    }
 
-    else:
-        return HttpResponseNotAllowed(
-            ["POST"],
-            "Método não permitido"
-        )
+    return render(request, "informacoes_visitante.html", context)
 
 
 def finalizar_visita(request, token):
