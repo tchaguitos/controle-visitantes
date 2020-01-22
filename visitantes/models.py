@@ -101,6 +101,13 @@ class Visitante(models.Model):
 
         return "Veículo não registrado"
 
+    def get_cpf(self):
+        cpf = self.cpf
+
+        cpf_mascarado = f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
+
+        return cpf_mascarado
+
     class Meta:
         verbose_name = "Visitante"
         verbose_name_plural = "Visitantes"
