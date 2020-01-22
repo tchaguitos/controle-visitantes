@@ -5,6 +5,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+
 class UsuarioManager(BaseUserManager):
 
     def create_user(self, email, tipo_usuario, password=None):
@@ -23,25 +24,26 @@ class UsuarioManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
-    
+
     def create_superuser(self, email, password):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
             tipo_usuario="P",
         )
-        
+
         user.is_active = True
         user.is_staff = True
         user.is_superuser = True
-        
+
         user.set_password(password)
         user.save(using=self._db)
-        
+
         return user
 
+
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    
+
     TIPO_USUARIO = (
         ("P", "Porteiro"),
     )
@@ -51,7 +53,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         max_length=254,
         unique=True,
     )
-    
+
     tipo_usuario = models.CharField(
         verbose_name="Tipo de usuário",
         max_length=1,
@@ -63,7 +65,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         "usuario ativo?",
         default=False
     )
-        
+
     is_staff = models.BooleanField(
         "usuario é da equipe de desenvolvimento?",
         default=False
@@ -73,7 +75,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         "usuario é um superusuário?",
         default=False
     )
-    
+
     USERNAME_FIELD = "email"
 
     objects = UsuarioManager()
@@ -82,6 +84,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         verbose_name="Usuário"
         verbose_name_plural = "Usuários"
         db_table = "usuario"
-    
+
     def __str__(self):
         return self.email

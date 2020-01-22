@@ -115,7 +115,7 @@
                         {% for visitante in visitantes %}
                             <tr>
                                 <td>{{ visitante.nome_completo }}</td>
-                                <td>{{ visitante.cpf }}</td>
+                                <td>{{ visitante.get_cpf }}</td>
                                 <td>{{ visitante.horario_chegada }}</td>
                                 <td>{{ visitante.get_horario_autorizacao }}</td>
                                 <td>{{ visitante.get_autorizado_por }}</td>
