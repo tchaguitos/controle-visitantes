@@ -1,10 +1,13 @@
 import os
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = "l6v@-@(c6-el@onp)con-oj==l)a2_hxt#3yg#i#2%71lszgx6"
-DEBUG = True
 ALLOWED_HOSTS = []
+DEBUG = True
+
+sys.path.append(os.path.join(BASE_DIR, "apps"))
 
 INSTALLED_APPS = [
     "django.contrib.admin",
