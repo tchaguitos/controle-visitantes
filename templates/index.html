@@ -32,7 +32,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitantes no condomínio</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">X</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ visitantes_em_visita }}</div>
                         </div>
                         
                         <div class="col-auto">
@@ -49,7 +49,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Visitantes aguardando autorização</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">X</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ visitantes_aguardando }}</div>
                         </div>
                         
                         <div class="col-auto">
@@ -82,7 +82,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Número de visitantes no mês</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">X</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">x</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -95,7 +95,7 @@
     
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Lista de visitantes</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Visitantes recentes</h6>
         </div>
 
         <div class="card-body">
