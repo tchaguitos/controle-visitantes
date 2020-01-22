@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-import usuarios.views
+import dashboard.views
 import visitantes.views
 
 urlpatterns = [
@@ -9,7 +9,7 @@ urlpatterns = [
 
     path(
         "",
-        usuarios.views.index,
+        dashboard.views.index,
         name="index",
     ),
 
