@@ -27,16 +27,16 @@
 
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitantes no condomínio</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Visitantes no condomínio</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ visitantes_em_visita }}</div>
                         </div>
                         
                         <div class="col-auto">
-                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                            <i class="fas fa-user-clock fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -61,15 +61,15 @@
         </div>
         
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Número de visitantes na semana</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">X</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitas finalizadas</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ visitantes_finalizado }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -81,8 +81,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Número de visitantes no mês</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">x</div>
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Visitantes no mês</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ visitantes_mes }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -95,7 +95,7 @@
     
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Visitantes recentes</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Lista de visitantes</h6>
         </div>
 
         <div class="card-body">
