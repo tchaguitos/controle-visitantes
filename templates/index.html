@@ -107,6 +107,7 @@
                         <th>Horário de chegada</th>
                         <th>Horário da autorização</th>
                         <th>Autorizado por</th>
+                        <th>Status</th>
                         <th>Mais informações</th>
                     </thead>
 
@@ -118,6 +119,7 @@
                                 <td>{{ visitante.horario_chegada }}</td>
                                 <td>{{ visitante.get_horario_autorizacao }}</td>
                                 <td>{{ visitante.get_autorizado_por }}</td>
+                                <td>{{ visitante.get_status_display }}</td>
                                 <td>
                                     <a href="{% url 'informacoes_visitante' token=visitante.token %}">
                                         Ver informações

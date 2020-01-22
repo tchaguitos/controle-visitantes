@@ -20,7 +20,7 @@
 
             {% if visitante.status == "EM_VISITA" %}
                 <a href="#" class="btn btn-warning btn-icon-split btn-sm" data-toggle="modal" data-target="#modal2">
-                    <span class="text">Encerrar visita</span>
+                    <span class="text">Finalizar visita</span>
                     
                     <span class="icon text-white-50">
                         <i class="fas fa-door-open"></i>
@@ -100,7 +100,7 @@
 
                     <div class="form-group col-md-6">
                         <label>CPF</label>
-                        <input type="text" class="form-control" value="{{ visitante.cpf }}" disabled>
+                        <input type="text" class="form-control" value="{{ visitante.get_cpf }}" disabled>
                     </div>
                 </div>
 
@@ -117,11 +117,17 @@
                 </div>
             </form>
             
-            <p class="mr-3 mt-3 text-right">
+            <p class="mr-2 mt-3 mb-4 text-right">
                 <small>
                     Visitante registrado em {{ visitante.horario_chegada }} por {{ visitante.registrado_por }}
                 </small>
             </p>
+
+            <div class="mr-1 text-right">
+                <a href="{% url 'index' %}" class="btn btn-secondary text-white" type="button">
+                    <span class="text">Voltar</span>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -168,12 +174,20 @@
             
                 <div class="modal-body">
                     <div class="modal-body">
-                        <p>Realmente deseja finalizar a visita?</p>
-                    </div>
+                        <h5 class="mb-3">
+                            Realmente deseja encerrar a visita?
+                        </h5>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a href="{% url 'finalizar_visita' token=visitante.token %}" type="button" class="btn btn-primary">Finalizar visita</a>
+                        <form method="post" action="{% url 'finalizar_visita' token=visitante.token %}">
+                            {% csrf_token %}
+
+                            <input hidden>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Finalizar visita</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
