@@ -8,7 +8,6 @@ def index(request):
 
     context = {
         "nome_pagina": "Página inicial",
-        "usuario_logado": request.user,
         "visitantes": visitantes,
     }
 
