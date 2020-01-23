@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from visitantes.models import Visitante
-
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+
+from visitantes.models import Visitante
+from visitantes.filters import VisitanteFilter
 
 from datetime import datetime
 
@@ -11,9 +12,12 @@ from datetime import datetime
 def index(request):
 
     # buscando todos os visitantes e ordenando por dia e hora de chegada
-    visitantes = Visitante.objects.all().order_by("-horario_chegada")
+    visitantes = Visitante.objects.all()
 
-    # filtrando visitantes por status
+    # filtrando visitantes utilizando o django-filter
+    visitantes_filter = VisitanteFilter(request.GET, queryset=visitantes)
+
+    # separando visitantes por status
     visitantes_em_visita = visitantes.filter(
         status="EM_VISITA"
     ).count()
@@ -34,9 +38,14 @@ def index(request):
         horario_chegada__month=mes_atual
     ).count()
 
+    # variavel para guardar a queryset do filtro já em ordem
+    visitantes_filter_queryset = visitantes_filter.qs.order_by(
+        "-horario_chegada"
+    )
+
     # paginando resultados para exibir de 10 em 10 itens
     numero_pagina = request.GET.get('page', 1)
-    visitantes_paginados = Paginator(visitantes, 10)
+    visitantes_paginados = Paginator(visitantes_filter_queryset, 10)
     pagina_obj = visitantes_paginados.get_page(numero_pagina)
 
     context = {
@@ -46,6 +55,7 @@ def index(request):
         "visitantes_aguardando": visitantes_aguardando,
         "visitantes_finalizado": visitantes_finalizado,
         "visitantes_mes": visitantes_mes,
+        "visitantes_filter": visitantes_filter,
         "pagina_obj": pagina_obj
     }
 
