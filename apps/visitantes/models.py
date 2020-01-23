@@ -1,4 +1,4 @@
-import uuid 
+from uuid import uuid4
 from django.db import models
 
 
@@ -10,7 +10,7 @@ class Visitante(models.Model):
         ("FINALIZADO", "Visita finalizada"),
     )
 
-    token = models.UUIDField(default=uuid.uuid4)
+    token = models.UUIDField(default=uuid4)
 
     nome_completo = models.CharField(
         verbose_name="Nome completo", max_length=194

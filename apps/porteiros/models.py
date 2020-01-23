@@ -1,9 +1,9 @@
-import uuid
+from uuid import uuid4
 from django.db import models
-from usuarios.models import Usuario
+
 
 class Porteiro(models.Model):
-    token = models.UUIDField(default=uuid.uuid4)
+    token = models.UUIDField(default=uuid4)
 
     usuario = models.OneToOneField(
         "usuarios.Usuario",
