@@ -7,9 +7,10 @@ from django.core.paginator import Paginator
 from datetime import datetime
 
 
-@login_required(login_url="login")
+@login_required()
 def index(request):
 
+    # buscando todos os visitantes e ordenando por dia e hora de chegada
     visitantes = Visitante.objects.all().order_by("-horario_chegada")
 
     # filtrando visitantes por status
@@ -33,7 +34,7 @@ def index(request):
         horario_chegada__month=mes_atual
     ).count()
 
-    # paginacao
+    # paginando resultados para exibir de 10 em 10 itens
     numero_pagina = request.GET.get('page', 1)
     visitantes_paginados = Paginator(visitantes, 10)
     pagina_obj = visitantes_paginados.get_page(numero_pagina)

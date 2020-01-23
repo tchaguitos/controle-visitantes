@@ -41,7 +41,7 @@
 
                     {% for field in form %}
                         <div class="form-group col-md-12">
-                            <label>{{ field.label }} {% if not field.name == "placa_veiculo" %} * {% endif %}</label>
+                            <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
                             {% render_field field placeholder=field.label class="form-control" %}
                         </div>
                     {% endfor %}

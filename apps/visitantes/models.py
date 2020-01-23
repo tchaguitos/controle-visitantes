@@ -1,7 +1,6 @@
 import uuid 
 from django.db import models
 
-from porteiros.models import Porteiro
 
 class Visitante(models.Model):
 
