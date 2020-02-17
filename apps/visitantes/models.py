@@ -69,7 +69,7 @@ class Visitante(models.Model):
         null=True,
     )
 
-    autorizado_por = models.CharField(
+    morador_resposavel = models.CharField(
         verbose_name="Nome do morador responsável por autorizar a entrada do visitante",
         max_length=194,
         blank=True,
