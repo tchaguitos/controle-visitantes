@@ -10,8 +10,6 @@ class Visitante(models.Model):
         ("FINALIZADO", "Visita finalizada"),
     )
 
-    token = models.UUIDField(default=uuid4)
-
     nome_completo = models.CharField(
         verbose_name="Nome completo", max_length=194
     )
@@ -82,9 +80,9 @@ class Visitante(models.Model):
 
         return "Visitante aguardando autorização"
 
-    def get_autorizado_por(self):
-        if self.autorizado_por:
-            return self.autorizado_por
+    def get_morador_responsavel(self):
+        if self.morador_resposavel:
+            return self.morador_resposavel
 
         return "Visitante aguardando autorização"
 

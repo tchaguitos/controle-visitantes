@@ -26,7 +26,7 @@ class VisitanteForm(forms.ModelForm):
 
 
 class AutorizaVisitanteForm(forms.ModelForm):
-    autorizado_por = forms.CharField(
+    morador_responsavel = forms.CharField(
         required=True,
         error_messages={"required": "Por favor, informe o nome do morador responsável por autorizar a entrada do visitante"}
     )
@@ -34,5 +34,5 @@ class AutorizaVisitanteForm(forms.ModelForm):
     class Meta:
         model = Visitante
         fields = [
-            "autorizado_por",
+            "morador_responsavel",
         ]

@@ -77,7 +77,7 @@
 
                     <div class="form-group col-md-4">
                         <label>Entrada autorizada por</label>
-                        <input type="text" class="form-control" value="{{ visitante.get_autorizado_por }}" disabled>
+                        <input type="text" class="form-control" value="{{ visitante.get_morador_responsavel }}" disabled>
                     </div>
 
                     <div class="form-group col-md-4">
@@ -147,8 +147,8 @@
                         {% csrf_token %}
 
                         <div class="form-group">
-                            <label for="id_autorizado_por" class="col-form-label">Nome do morador responsável por autorizar a entrada do visitante:</label>
-                            {{ form.autorizado_por | add_class:"form-control"  }}
+                            <label for="id_morador_responsavel" class="col-form-label">Nome do morador responsável por autorizar a entrada do visitante:</label>
+                            {{ form.morador_responsavel | add_class:"form-control"  }}
                         </div>
 
                         <div class="modal-footer">
@@ -178,7 +178,7 @@
                             Realmente deseja encerrar a visita?
                         </h5>
 
-                        <form method="post" action="{% url 'finalizar_visita' token=visitante.token %}">
+                        <form method="post" action="{% url 'finalizar_visita' id=visitante.id %}">
                             {% csrf_token %}
 
                             <input hidden>
