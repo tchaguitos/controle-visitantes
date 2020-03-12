@@ -39,10 +39,10 @@ def registrar_visitante(request):
     return render(request, "registrar_visitante.html", context)
 
 
-def informacoes_visitante(request, token):
+def informacoes_visitante(request, id):
 
     form = AutorizaVisitanteForm()
-    visitante = get_object_or_404(Visitante, token=token)
+    visitante = get_object_or_404(Visitante, id=id)
 
     if request.method == "POST":
         form = AutorizaVisitanteForm(request.POST, instance=visitante)
@@ -71,10 +71,10 @@ def informacoes_visitante(request, token):
     return render(request, "informacoes_visitante.html", context)
 
 
-def finalizar_visita(request, token):
+def finalizar_visita(request, id):
 
     if request.method == "POST":
-        visitante = get_object_or_404(Visitante, token=token)
+        visitante = get_object_or_404(Visitante, id=id)
 
         visitante.status = "FINALIZADO"
         visitante.horario_saida = datetime.now()
