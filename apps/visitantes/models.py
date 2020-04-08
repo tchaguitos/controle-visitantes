@@ -4,11 +4,11 @@ from django.db import models
 
 class Visitante(models.Model):
 
-    STATUS_VISITANTE = (
+    STATUS_VISITANTE = [
         ("AGUARDANDO", "Aguardando autorização"),
         ("EM_VISITA", "Em visita"),
         ("FINALIZADO", "Visita finalizada"),
-    )
+    ]
 
     nome_completo = models.CharField(
         verbose_name="Nome completo", max_length=194
@@ -67,7 +67,7 @@ class Visitante(models.Model):
         null=True,
     )
 
-    morador_resposavel = models.CharField(
+    morador_responsavel = models.CharField(
         verbose_name="Nome do morador responsável por autorizar a entrada do visitante",
         max_length=194,
         blank=True,
@@ -81,8 +81,8 @@ class Visitante(models.Model):
         return "Visitante aguardando autorização"
 
     def get_morador_responsavel(self):
-        if self.morador_resposavel:
-            return self.morador_resposavel
+        if self.morador_responsavel:
+            return self.morador_responsavel
 
         return "Visitante aguardando autorização"
 
