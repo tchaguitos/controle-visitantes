@@ -43,7 +43,6 @@ def index(request):
 
     context = {
         "nome_pagina": "Página inicial",
-        "visitantes": visitantes,
         "visitantes_em_visita": visitantes_em_visita,
         "visitantes_aguardando": visitantes_aguardando,
         "visitantes_finalizado": visitantes_finalizado,
