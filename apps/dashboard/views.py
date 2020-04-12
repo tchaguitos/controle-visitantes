@@ -7,11 +7,11 @@ from visitantes.models import Visitante
 from datetime import datetime
 
 
-@login_required()
+@login_required
 def index(request):
 
     # buscando todos os visitantes e ordenando por dia e hora de chegada
-    visitantes = Visitante.objects.all().order_by(
+    visitantes = Visitante.objects.order_by(
         "-horario_chegada"
     )
 

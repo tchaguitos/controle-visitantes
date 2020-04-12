@@ -4,6 +4,7 @@ from django.shortcuts import (
 )
 
 from django.http import HttpResponseNotAllowed
+from django.contrib.auth.decorators import login_required
 
 from visitantes.models import Visitante
 from visitantes.forms import VisitanteForm, AutorizaVisitanteForm
@@ -11,6 +12,7 @@ from visitantes.forms import VisitanteForm, AutorizaVisitanteForm
 from datetime import datetime
 
 
+@login_required
 def registrar_visitante(request):
 
     form = VisitanteForm()
@@ -39,6 +41,7 @@ def registrar_visitante(request):
     return render(request, "registrar_visitante.html", context)
 
 
+@login_required
 def informacoes_visitante(request, id):
 
     form = AutorizaVisitanteForm()
@@ -71,6 +74,7 @@ def informacoes_visitante(request, id):
     return render(request, "informacoes_visitante.html", context)
 
 
+@login_required
 def finalizar_visita(request, id):
 
     if request.method == "POST":
