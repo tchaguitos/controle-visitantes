@@ -4,7 +4,7 @@ O repositório `controle-visitantes` é destinado a armazenar o código referent
 
 O objetivo do curso é explorar as principais funcionalidades do framework Django por meio da construção de uma dashboard para registro e administração de visitantes de um determinado condomínio. Vamos desenvolver um projeto real e aprender ao longo de seu desenvolvimento o que são as ferramentas que o framework nos dá e como utilizá-las.
 
-Saiba mais sobre o projeto abaixo e, se quiser, acesse o link do curso [clicando aqui](http://127.0.0.1).
+Saiba mais sobre o projeto abaixo ou, se quiser, acessar o link do curso [clicando aqui](http://127.0.0.1).
 
 ## Conhecendo o processo
 
