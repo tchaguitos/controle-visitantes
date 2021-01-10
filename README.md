@@ -1,8 +1,10 @@
 # Home
 
-Todo material aqui apresentado serve de guia para o desenvolvimento do curso [Django framework na prática](http://127.0.0.1) e pode ser utilizado como material complementar às aulas disponíveis na plataforma Udemy. Apesar disto, todo o material referente à esta apostila é de uso aberto e pode ser utilizado no aprendizado livre sem a necessidade de qualquer pagamento, contribuição ou até mesmo compra do curso na plataforma mencionada.
+O repositório `controle-visitantes` é destinado a armazenar o código referente ao projeto desenvolvido durante o curso [Django framework na prática](http://127.0.0.1) disponível na plataforma Udemy.
 
-O objetivo do curso é explorar as principais funcionalidades do framework Django por meio da construção de uma dashboard para registro e administração de visitantes de um determinado condomínio. Vamos desenvolver um projeto real e aprender ao longo de seu desenvolvimento o que são as ferramentas que o framework nos dá e como utilizá-las. Seguindo o roteiro aqui apresentado, você vai poder iniciar a sua carreira como desenvolvedor web utilizando a linguagem Python e desenvolver aplicações seguras e escaláveis em tempo recorde.
+O objetivo do curso é explorar as principais funcionalidades do framework Django por meio da construção de uma dashboard para registro e administração de visitantes de um determinado condomínio. Vamos desenvolver um projeto real e aprender ao longo de seu desenvolvimento o que são as ferramentas que o framework nos dá e como utilizá-las.
+
+Saiba mais sobre o projeto abaixo e, se quiser, acesse o link do curso [clicando aqui](http://127.0.0.1).
 
 ## Conhecendo o processo
 
@@ -15,6 +17,8 @@ O projeto consiste em uma ou mais páginas web em que seja possível registrar v
 Na imagem abaixo é possível visualizar o fluxo executado pelos porteiros e suas etapas:
 
 ![Imagem com etapas do processo de registro de visitantes, onde temos quatro etapas: chegada na portaria, aguardando autoriza&#xE7;&#xE3;o, realizando visita e visita finalizada](docs/images/processo-registro.png)
+
+Você também pode acessar a proposta de desenvolvimento [clicando aqui](docs/proposta-de-desenvolvimento.md)
 
 ## Principais funcionalidades
 
