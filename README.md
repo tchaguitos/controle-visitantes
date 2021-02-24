@@ -1,10 +1,10 @@
 # Home
 
-O repositório `controle-visitantes` é destinado a armazenar o código referente ao projeto desenvolvido durante o curso [Django framework na prática](http://127.0.0.1) disponível na plataforma Udemy.
+O repositório `controle-visitantes` é destinado a armazenar o código referente ao projeto desenvolvido durante o curso [Django framework na prática](https://bit.ly/3qNnh9N) disponível na plataforma Udemy.
 
 O objetivo do curso é explorar as principais funcionalidades do framework Django por meio da construção de uma dashboard para registro e administração de visitantes de um determinado condomínio. Vamos desenvolver um projeto real e aprender ao longo de seu desenvolvimento o que são as ferramentas que o framework nos dá e como utilizá-las.
 
-Saiba mais sobre o projeto abaixo ou, se quiser, acessar o link do curso [clicando aqui](http://127.0.0.1).
+Saiba mais sobre o projeto abaixo ou, se quiser, acessar o link do curso [clicando aqui](https://bit.ly/3qNnh9N).
 
 ## Conhecendo o processo
 
