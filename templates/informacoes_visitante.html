@@ -178,7 +178,7 @@
                             Realmente deseja encerrar a visita?
                         </h5>
 
-                        <form method="post" action="{% url 'finalizar_visita' id=visitante.id %}">
+                        <form method="post" action="{% url 'finalizar_visita' token=visitante.token %}">
                             {% csrf_token %}
 
                             <input hidden>

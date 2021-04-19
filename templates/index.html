@@ -129,7 +129,7 @@
                                 <td>{{ visitante.get_morador_responsavel }}</td>
                                 <td>{{ visitante.get_status_display }}</td>
                                 <td>
-                                    <a href="{% url 'informacoes_visitante' id=visitante.id %}">
+                                    <a href="{% url 'informacoes_visitante' token=visitante.token %}">
                                         Ver informações
                                     </a>
                                 </td>

@@ -42,10 +42,10 @@ def registrar_visitante(request):
 
 
 @login_required
-def informacoes_visitante(request, id):
+def informacoes_visitante(request, token):
 
     form = AutorizaVisitanteForm()
-    visitante = get_object_or_404(Visitante, id=id)
+    visitante = get_object_or_404(Visitante, token=token)
 
     if request.method == "POST":
         form = AutorizaVisitanteForm(request.POST, instance=visitante)
@@ -75,10 +75,10 @@ def informacoes_visitante(request, id):
 
 
 @login_required
-def finalizar_visita(request, id):
+def finalizar_visita(request, token):
 
     if request.method == "POST":
-        visitante = get_object_or_404(Visitante, id=id)
+        visitante = get_object_or_404(Visitante, token=token)
 
         visitante.status = "FINALIZADO"
         visitante.horario_saida = datetime.now()

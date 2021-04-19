@@ -10,6 +10,12 @@ class Visitante(models.Model):
         ("FINALIZADO", "Visita finalizada"),
     ]
 
+    token = models.UUIDField(
+        default=uuid4,
+        editable=False,
+        unique=True
+    )
+
     nome_completo = models.CharField(
         verbose_name="Nome completo", max_length=194
     )
