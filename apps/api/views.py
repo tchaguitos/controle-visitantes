@@ -1,12 +1,20 @@
+from uuid import UUID
+from typing import Optional
+from http import HTTPMethod
+from datetime import datetime
+
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from django.shortcuts import get_object_or_404
-from django.db import IntegrityError, InternalError
 
 from visitantes.models import Visitante
-from visitantes.serializers import CriarVisitanteSerializer, VisitanteSerializer
+from visitantes.serializers import (
+    VisitanteSerializer,
+    CriarVisitanteSerializer,
+    AutorizaVisitanteSerializer,
+)
 
 class VisitanteAPI(viewsets.ViewSet):
     def get_queryset(self):
@@ -20,7 +28,7 @@ class VisitanteAPI(viewsets.ViewSet):
 
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
+    def retrieve(self, request, pk: Optional[UUID] = None):
         queryset = self.get_queryset()
         visitante = get_object_or_404(queryset, token=pk)
 
@@ -36,10 +44,36 @@ class VisitanteAPI(viewsets.ViewSet):
 
             return Response(
                 {"token": visitante.token},
-                status=status.HTTP_201_CREATED
+                status=status.HTTP_201_CREATED,
             )
 
         return Response(
             serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    @action(detail=True, methods=[HTTPMethod.PATCH], url_path="autoriza-entrada")
+    def autoriza_entrada(self, request, pk: Optional[UUID] = None):
+        queryset = self.get_queryset()
+        visitante = get_object_or_404(queryset, token=pk)
+
+        serializer = AutorizaVisitanteSerializer(
+            instance=visitante,
+            data=request.data
+        )
+
+        if serializer.is_valid():
+            visitante = serializer.save(
+                status="EM_VISITA",
+                horario_autorizacao=datetime.utcnow(),
+            )
+
+            return Response(
+                {"token": visitante.token},
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
         )

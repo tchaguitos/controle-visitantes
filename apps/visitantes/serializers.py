@@ -21,3 +21,11 @@ class VisitanteSerializer(serializers.ModelSerializer):
             "numero_casa", "status", "horario_chegada", "horario_autorizacao",
             "horario_saida", "placa_veiculo", "morador_responsavel", "registrado_por"
         ]
+
+
+class AutorizaVisitanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visitante
+        fields = [
+            "morador_responsavel"
+        ]
