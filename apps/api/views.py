@@ -65,15 +65,40 @@ class VisitanteAPI(viewsets.ViewSet):
         if serializer.is_valid():
             visitante = serializer.save(
                 status="EM_VISITA",
-                horario_autorizacao=datetime.utcnow(),
+                horario_autorizacao=datetime.now(),
             )
 
+            retorno = {"message": "Entrada de visitante autorizada com sucesso"}
+
             return Response(
-                {"token": visitante.token},
+                data=retorno,
                 status=status.HTTP_200_OK,
             )
 
         return Response(
             serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    @action(detail=True, methods=[HTTPMethod.PATCH], url_path="finalizar-visita")
+    def finalizar_visita(self, request, pk: Optional[UUID] = None):
+        queryset = self.get_queryset()
+        visitante = get_object_or_404(queryset, token=pk)
+
+        if visitante:
+            visitante.status = "FINALIZADO"
+            visitante.horario_saida = datetime.now()
+
+            visitante.save()
+
+            retorno = {"message": "Visita finalizada com sucesso"}
+
+            return Response(
+                data=retorno,
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            {"message": "Ocorreu um erro ao finalizar a visita"},
             status=status.HTTP_400_BAD_REQUEST,
         )
